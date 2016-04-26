@@ -14,8 +14,8 @@ public class Ship extends Rectangle {
 	public static final int DEFAULT_SPEED = 5;
 	private static final int Y_OFFSET = 5; // initial y distance of the ship from the bottom of the screen 
 	
-	private int shipWidth = 25;
-	private int shipHeight = 25;
+	private int shipWidth = 30;
+	private int shipHeight = 40;
 
 	private int speed = DEFAULT_SPEED;	
 	

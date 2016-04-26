@@ -8,6 +8,7 @@ import java.util.List;
 import javax.swing.Timer;
 
 import rbadia.voidspace.model.Asteroid;
+import rbadia.voidspace.model.Asteroid1;
 import rbadia.voidspace.model.Bullet;
 import rbadia.voidspace.model.EnemyShip;
 import rbadia.voidspace.model.ReaperShip;
@@ -27,6 +28,7 @@ public class GameLogic {
 	private EnemyShip enemyShip;
 	private ReaperShip reaperShip;
 	private Asteroid asteroid;
+	private Asteroid1 asteroid1;
 	private List<Bullet> bullets;
 	private List<Bullet> enemyBullets;
 	private List<Bullet> reaperBullets;
@@ -77,9 +79,12 @@ public class GameLogic {
 		status.setShipsLeft(3);
 		status.setGameOver(false);
 		status.setAsteroidsDestroyed(0);
+		status.setAsteroids1Destroyed(0);
+		status.setTotalAsteroidsDestroyed(0);
 		status.setEnemiesDestroyed(0);
 		status.setReapersDestroyed(0);
 		status.setNewAsteroid(false);
+		status.setNewAsteroid1(false);
 		status.setNewEnemyShip(true);
 		status.setNewReaperShip(true);
 		status.setScore(0);
@@ -88,6 +93,7 @@ public class GameLogic {
 		// init the ship and the asteroid
         newShip(gameScreen);
         newAsteroid(gameScreen);
+        newAsteroid1(gameScreen);
         
         // prepare game screen
         gameScreen.doNewGame();
@@ -236,6 +242,11 @@ public class GameLogic {
 		return asteroid;
 	}
 	
+	public Asteroid1 newAsteroid1(GameScreen screen){
+		this.asteroid1 = new Asteroid1(screen);
+		return asteroid1;
+	}
+	
 	/**
 	 * Returns the ship.
 	 * @return the ship
@@ -267,6 +278,10 @@ public class GameLogic {
 	public Asteroid getAsteroid() {
 		return asteroid;
 	}
+	
+	public Asteroid1 getAsteroid1() {
+		return asteroid1;
+	}
 
 	/**
 	 * Returns the list of bullets.
@@ -291,4 +306,5 @@ public class GameLogic {
 	public List<Bullet> getReaperBullets() {
 		return reaperBullets;
 	}
+
 }

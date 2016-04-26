@@ -9,6 +9,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 
 import rbadia.voidspace.model.Asteroid;
+import rbadia.voidspace.model.Asteroid1;
 import rbadia.voidspace.model.Bullet;
 import rbadia.voidspace.model.EnemyShip;
 import rbadia.voidspace.model.ReaperShip;
@@ -21,7 +22,9 @@ public class GraphicsManager {
 	private BufferedImage shipImg;
 	private BufferedImage bulletImg;
 	private BufferedImage asteroidImg;
+	private BufferedImage asteroid1Img;
 	private BufferedImage asteroidExplosionImg;
+	private BufferedImage asteroid1ExplosionImg;
 	private BufferedImage shipExplosionImg;
 	private BufferedImage enemyShipImg;
 	private BufferedImage reaperShipImg;
@@ -38,7 +41,9 @@ public class GraphicsManager {
 			this.enemyShipImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/enemyShip.png"));
 			this.shipImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/ship.png"));
 			this.asteroidImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/asteroid.png"));
+			this.asteroid1Img = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/asteroid1.png"));
 			this.asteroidExplosionImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/asteroidExplosion.png"));
+			this.asteroid1ExplosionImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/asteroidExplosion.png"));
 			this.shipExplosionImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/shipExplosion.png"));
 			this.bulletImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/bullet.png"));
 		} catch (Exception e) {
@@ -116,6 +121,10 @@ public class GraphicsManager {
 	public void drawAsteroid(Asteroid asteroid, Graphics2D g2d, ImageObserver observer) {
 		g2d.drawImage(asteroidImg, asteroid.x, asteroid.y, observer);
 	}
+	
+	public void drawAsteroid1(Asteroid1 asteroid1, Graphics2D g2d, ImageObserver observer) {
+		g2d.drawImage(asteroid1Img, asteroid1.x, asteroid1.y, observer);
+	}
 
 	/**
 	 * Draws a ship explosion image to the specified graphics canvas.
@@ -137,6 +146,10 @@ public class GraphicsManager {
 		g2d.drawImage(asteroidExplosionImg, asteroidExplosion.x, asteroidExplosion.y, observer);
 	}
 	
+	public void drawAsteroid1Explosion(Rectangle asteroid1Explosion, Graphics2D g2d, ImageObserver observer) {
+		g2d.drawImage(asteroid1ExplosionImg, asteroid1Explosion.x, asteroid1Explosion.y, observer);
+	}
+	
 	/**
 	 * Draws an asteroid explosion image to the specified graphics canvas.
 	 * @param asteroidExplosion the bounding rectangle of the explosion
@@ -146,5 +159,6 @@ public class GraphicsManager {
 	public void drawReaperExplosion(Rectangle reaperExplosion, Graphics2D g2d, ImageObserver observer) {
 		g2d.drawImage(reaperExplosionImg, reaperExplosion.x, reaperExplosion.y, observer);
 	}
+
 	
 }
