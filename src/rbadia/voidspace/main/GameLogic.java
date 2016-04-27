@@ -12,6 +12,7 @@ import rbadia.voidspace.model.Asteroid1;
 import rbadia.voidspace.model.Bullet;
 import rbadia.voidspace.model.EnemyShip;
 import rbadia.voidspace.model.ReaperShip;
+import rbadia.voidspace.model.BossShip;
 import rbadia.voidspace.model.Ship;
 import rbadia.voidspace.sounds.SoundManager;
 
@@ -27,11 +28,14 @@ public class GameLogic {
 	private Ship ship;
 	private EnemyShip enemyShip;
 	private ReaperShip reaperShip;
+	private BossShip bossShip;
+	
 	private Asteroid asteroid;
 	private Asteroid1 asteroid1;
 	private List<Bullet> bullets;
 	private List<Bullet> enemyBullets;
 	private List<Bullet> reaperBullets;
+	private List<Bullet> bossBullets;
 	
 	/**
 	 * Create a new game logic handler
@@ -49,6 +53,7 @@ public class GameLogic {
 		bullets = new ArrayList<Bullet>();
 		enemyBullets = new ArrayList<Bullet>();
 		reaperBullets = new ArrayList<Bullet>(5);
+		bossBullets = new ArrayList<Bullet>();
 	}
 
 	/**
@@ -84,10 +89,12 @@ public class GameLogic {
 		status.setTotalAsteroidsDestroyed(0);
 		status.setEnemiesDestroyed(0);
 		status.setReapersDestroyed(0);
+		status.setBossesDestroyed(0);
 		status.setNewAsteroid(false);
 		status.setNewAsteroid1(false);
 		status.setNewEnemyShip(true);
 		status.setNewReaperShip(true);
+		status.setNewBossShip(true);
 		status.setScore(0);
 		status.setLevel(1);
 				
@@ -159,11 +166,20 @@ public class GameLogic {
 	}
 	
 	/**
-	 * Fire a bullet from enemy ship.
+	 * Fire a bullet from reaper ship.
 	 */
 	public void fireReaperBullet(){		
 		Bullet reaperBullet = new Bullet(reaperShip);
 		reaperBullets.add(reaperBullet);
+		soundMan.playBulletSound();
+	}
+	
+	/**
+	 * Fire a bullet from boss ship.
+	 */
+	public void fireBossBullet(){		
+		Bullet bossBullet = new Bullet(bossShip);
+		bossBullets.add(bossBullet);
 		soundMan.playBulletSound();
 	}
 	
@@ -190,6 +206,21 @@ public class GameLogic {
 	public boolean moveReaperBullet(Bullet reaperBullet){
 		if(reaperBullet.getY() - reaperBullet.getSpeed() <= gameScreen.getHeight()){
 			reaperBullet.translate(0, reaperBullet.getSpeed());
+			return false;
+		}
+		else{
+			return true;
+		}
+	}
+	
+	/**
+	 * Move a Boss bullet once fired.
+	 * @param bullet the bullet to move
+	 * @return if the bullet should be removed from screen
+	 */
+	public boolean moveBossBullet(Bullet bossBullet){
+		if(bossBullet.getY() - bossBullet.getSpeed() <= gameScreen.getHeight()){
+			bossBullet.translate(0, bossBullet.getSpeed());
 			return false;
 		}
 		else{
@@ -228,11 +259,19 @@ public class GameLogic {
 	}
 	
 	/**
-	 * Create a new enemy ship (and replace current one).
+	 * Create a new reaper ship (and replace current one).
 	 */
 	public ReaperShip newReaperShip(GameScreen screen){
 		this.reaperShip = new ReaperShip(screen);
 		return reaperShip;
+	}
+	
+	/**
+	 * Create a new boss ship (and replace current one).
+	 */
+	public BossShip newBossShip(GameScreen screen){
+		this.bossShip = new BossShip(screen);
+		return bossShip;
 	}
 	
 	/**
@@ -262,6 +301,14 @@ public class GameLogic {
 	 */
 	public ReaperShip getReaperShip() {
 		return reaperShip;
+	}
+	
+	/**
+	 * Returns the Boss ship.
+	 * @return the Boss ship
+	 */
+	public BossShip getBossShip() {
+		return bossShip;
 	}
 	
 	/**
@@ -306,6 +353,14 @@ public class GameLogic {
 	 */
 	public List<Bullet> getReaperBullets() {
 		return reaperBullets;
+	}
+	
+	/**
+	 * Returns the list of Boss bullets.
+	 * @return the list of Boss bullets
+	 */
+	public List<Bullet> getBossBullets() {
+		return bossBullets;
 	}
 
 }

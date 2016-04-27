@@ -13,6 +13,7 @@ public class GameStatus {
 	private boolean newShip;
 	private boolean newEnemyShip;
 	private boolean newReaperShip;
+	private boolean newBossShip;
 	private boolean newAsteroid;
 	private boolean newAsteroid1;
 	private long asteroidsDestroyed = 0;
@@ -20,6 +21,7 @@ public class GameStatus {
 	private long totalAsteroidsDestroyed = 0;
 	private int enemiesDestroyed = 0;
 	private int reapersDestroyed = 0;
+	private int bossesDestroyed = 0;
 	private int shipsLeft;
 	private int score = 0;
 	private int level = 1;
@@ -89,7 +91,7 @@ public class GameStatus {
 	}
 	
 	/**
-	 * Indicates if a new  Reaper ship should be created/drawn.
+	 * Indicates if a new Reaper ship should be created/drawn.
 	 * @return if a new Reaper ship should be created/drawn
 	 */
 	public synchronized boolean isNewReaperShip() {
@@ -98,6 +100,18 @@ public class GameStatus {
 	
 	public synchronized void setNewReaperShip(boolean newReaperShip) {
 		this.newReaperShip = newReaperShip;
+	}
+	
+	/**
+	 * Indicates if a new Boss ship should be created/drawn.
+	 * @return if a new Boss ship should be created/drawn
+	 */
+	public synchronized boolean isNewBossShip() {
+		return newBossShip;
+	}
+	
+	public synchronized void setNewBossShip(boolean newBossShip) {
+		this.newBossShip = newBossShip;
 	}
 	
 	/**
@@ -207,5 +221,18 @@ public class GameStatus {
 	public synchronized void setReapersDestroyed(int reapersDestroyed){
 		this.reapersDestroyed = reapersDestroyed;
 	}
+	
+	/**
+	 * Returns the number of Boss ships destroyed
+	 * @return the number of Boss ships destroyed
+	 */
+	public synchronized int getBossesDestroyed() {
+		return bossesDestroyed;
+	}
+	
+	public synchronized void setBossesDestroyed(int bossesDestroyed){
+		this.bossesDestroyed = bossesDestroyed;
+	}
+
 
 }

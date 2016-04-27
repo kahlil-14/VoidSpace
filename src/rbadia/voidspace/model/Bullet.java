@@ -40,6 +40,13 @@ public class Bullet extends Rectangle {
 		this.setSize(bulletWidth, bulletHeight);
 	}
 
+	public Bullet(BossShip bossShip) {
+		speed = 1;
+		this.setLocation(bossShip.x + bossShip.width/2 - bulletWidth/2,
+				bossShip.y - bulletHeight + bossShip.height);
+		this.setSize(bulletWidth, bulletHeight);
+	}
+
 	/**
 	 * Return the bullet's speed.
 	 * @return the bullet's speed.
