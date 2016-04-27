@@ -8,7 +8,7 @@ import rbadia.voidspace.main.GameScreen;
 public class Asteroid1 extends Rectangle {
 	private static final long serialVersionUID = 1L;
 	
-	public static final int DEFAULT_SPEED = 4;
+	public static final int DEFAULT_SPEED = 2;
 	
 	private int asteroid1Width = 32;
 	private int asteroid1Height = 32;

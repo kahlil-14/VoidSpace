@@ -15,6 +15,8 @@ public class InputHandler implements KeyListener{
 	private boolean upIsPressed;
 	private boolean spaceIsPressed;
 	private boolean shiftIsPressed;
+	private boolean vIsPressed;
+	private double speed = 1000/5;
 	
 	private long lastBulletTime;
 	
@@ -39,7 +41,7 @@ public class InputHandler implements KeyListener{
 			if(spaceIsPressed){
 				// fire only up to 5 bullets per second
 				long currentTime = System.currentTimeMillis();
-				if((currentTime - lastBulletTime) > 1000/5){
+				if((currentTime - lastBulletTime) > this.speed){
 					lastBulletTime = currentTime;
 					gameLogic.fireBullet();
 				}
@@ -66,6 +68,12 @@ public class InputHandler implements KeyListener{
 			if(rightIsPressed){
 				moveShipRight(ship, gameScreen.getWidth());
 			}
+			
+//			if(vIsPressed){
+//				this.speed/=2;
+//			}else{
+//				this.speed = 1000/5;
+//			}
 		}
 	}
 
@@ -136,6 +144,7 @@ public class InputHandler implements KeyListener{
 				downIsPressed = false;
 				upIsPressed = false;
 				spaceIsPressed = false;
+				vIsPressed = false;
 				
 				gameLogic.newGame();
 			}
@@ -145,6 +154,10 @@ public class InputHandler implements KeyListener{
 			break;
 		case KeyEvent.VK_SHIFT:
 			this.shiftIsPressed = true;
+			break;
+		case KeyEvent.VK_V:
+			this.vIsPressed = true;
+			this.speed/=2;
 			break;
 		case KeyEvent.VK_ESCAPE:
 			System.exit(1);
@@ -178,6 +191,11 @@ public class InputHandler implements KeyListener{
 			Ship ship = gameLogic.getShip(); 
 			ship.setSpeed(ship.getDefaultSpeed());
 			break;
+		case KeyEvent.VK_V:
+			this.vIsPressed = false;
+			ship = gameLogic.getShip();
+			this.speed = 1000/5;
+			
 		}
 		e.consume();
 	}

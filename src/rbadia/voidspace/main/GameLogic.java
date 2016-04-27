@@ -75,6 +75,7 @@ public class GameLogic {
 		
 		// init game variables
 		bullets = new ArrayList<Bullet>();
+		soundMan.playGameMusic();
 
 		status.setShipsLeft(3);
 		status.setGameOver(false);
