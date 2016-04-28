@@ -38,6 +38,9 @@ public class MainFrame extends JFrame {
 	private JLabel reapersLabel;
 	private JLabel reapersValueLabel;
 	
+	private JLabel bossesLabel;
+	private JLabel bossesValueLabel;
+	
 	/**
 	 * This is the default constructor
 	 */
@@ -71,6 +74,18 @@ public class MainFrame extends JFrame {
 	 */
 	private JPanel getJContentPane() {
 		if (jContentPane == null) {
+			GridBagConstraints gridBagConstraints14 = new GridBagConstraints();
+			gridBagConstraints14.insets = new Insets(0, 0, 0, 0);
+			gridBagConstraints14.gridy = 4;
+			gridBagConstraints14.anchor = GridBagConstraints.WEST;
+			gridBagConstraints14.weightx = 1.0D;
+			gridBagConstraints14.gridx = 3;
+			GridBagConstraints gridBagConstraints13 = new GridBagConstraints();
+			gridBagConstraints13.insets = new Insets(0, 0, 0, 0);
+			gridBagConstraints13.gridy = 4;
+			gridBagConstraints13.anchor = GridBagConstraints.EAST;
+			gridBagConstraints13.weightx = 1.0D;
+			gridBagConstraints13.gridx = 2;
 			GridBagConstraints gridBagConstraints12 = new GridBagConstraints();
 			gridBagConstraints12.insets = new Insets(0, 0, 0, 0);
 			gridBagConstraints12.gridy = 3;
@@ -155,6 +170,8 @@ public class MainFrame extends JFrame {
 			enemiesValueLabel = new JLabel("0");
 			reapersLabel = new JLabel("Reapers Destroyed: ");
 			reapersValueLabel = new JLabel("0");
+			bossesLabel = new JLabel("Bosses Destroyed: ");
+			bossesValueLabel = new JLabel("0");
 			destroyedLabel = new JLabel("Asteroids Destroyed: ");
 			destroyedValueLabel = new JLabel("0");
 			scoreLabel = new JLabel("Score: ");
@@ -176,6 +193,8 @@ public class MainFrame extends JFrame {
 			jContentPane.add(enemiesValueLabel, gridBagConstraints10);
 			jContentPane.add(reapersLabel, gridBagConstraints11);
 			jContentPane.add(reapersValueLabel, gridBagConstraints12);
+			jContentPane.add(bossesLabel, gridBagConstraints13);
+			jContentPane.add(bossesValueLabel, gridBagConstraints14);
 		}
 		return jContentPane;
 	}

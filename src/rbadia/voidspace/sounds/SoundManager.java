@@ -13,8 +13,12 @@ public class SoundManager {
 
 	private AudioClip shipExplosionSound = Applet.newAudioClip(GameScreen.class.getResource(
 			"/rbadia/voidspace/sounds/shipExplosion.wav"));
+	private AudioClip bossExplosionSound = Applet.newAudioClip(GameScreen.class.getResource(
+			"/rbadia/voidspace/sounds/bossShipExplosion.wav"));
 	private AudioClip bulletSound = Applet.newAudioClip(GameScreen.class.getResource(
 			"/rbadia/voidspace/sounds/laser.wav"));
+	private AudioClip bossBulletSound = Applet.newAudioClip(GameScreen.class.getResource(
+			"/rbadia/voidspace/sounds/bossBullet.wav"));
 	private AudioClip gameMusic = Applet.newAudioClip(GameScreen.class.getResource(
 			"/rbadia/voidspace/sounds/MassEffect.wav"));
 
@@ -26,6 +30,32 @@ public class SoundManager {
 			new Thread(new Runnable(){
 				public void run() {
 					bulletSound.play();
+				}
+			}).start();
+		}
+	}
+	
+	/**
+	 * Plays sound for bullets fired by the boss.
+	 */
+	public void playBossBulletSound(){
+		if(SOUND_ON){
+			new Thread(new Runnable(){
+				public void run() {
+					bossBulletSound.play();
+				}
+			}).start();
+		}
+	}
+	
+	/**
+	 * Plays sound for boss explosions.
+	 */
+	public void playBossExplosionSound(){
+		if(SOUND_ON){
+			new Thread(new Runnable(){
+				public void run() {
+					bossExplosionSound.play();
 				}
 			}).start();
 		}

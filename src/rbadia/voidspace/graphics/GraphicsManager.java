@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 
 import rbadia.voidspace.model.Asteroid;
 import rbadia.voidspace.model.Asteroid1;
+import rbadia.voidspace.model.BossShip;
 import rbadia.voidspace.model.Bullet;
 import rbadia.voidspace.model.EnemyShip;
 import rbadia.voidspace.model.ReaperShip;
@@ -29,6 +30,9 @@ public class GraphicsManager {
 	private BufferedImage enemyShipImg;
 	private BufferedImage reaperShipImg;
 	private BufferedImage reaperExplosionImg;
+	private BufferedImage bossShipImg;
+	private BufferedImage bossExplosionImg;
+	private BufferedImage bossBulletImg;
 	
 	/**
 	 * Creates a new graphics manager and loads the game images.
@@ -45,7 +49,11 @@ public class GraphicsManager {
 			this.asteroidExplosionImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/asteroidExplosion.png"));
 			this.asteroid1ExplosionImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/asteroidExplosion.png"));
 			this.shipExplosionImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/shipExplosion.png"));
+			this.bossExplosionImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/bossExplosion.png"));
+			this.bossShipImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/Boss.png"));
 			this.bulletImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/bullet.png"));
+			this.bossBulletImg = ImageIO.read(getClass().getResource("/rbadia/voidspace/graphics/bossBullet.png"));
+			
 		} catch (Exception e) {
 			JOptionPane.showMessageDialog(null, "The graphic files are either corrupt or missing.",
 					"VoidSpace - Fatal Error", JOptionPane.ERROR_MESSAGE);
@@ -85,6 +93,16 @@ public class GraphicsManager {
 	}
 	
 	/**
+	 * Draws the boss ship image to the specified graphics canvas.
+	 * @param boss ship the boss ship to draw
+	 * @param g2d the graphics canvas
+	 * @param observer object to be notified
+	 */
+	public void drawBossShip(BossShip bossShip, Graphics2D g2d, ImageObserver observer) {
+		g2d.drawImage(bossShipImg, bossShip.x, bossShip.y, observer);
+	}
+	
+	/**
 	 * Draws a bullet image to the specified graphics canvas.
 	 * @param bullet the bullet to draw
 	 * @param g2d the graphics canvas
@@ -111,6 +129,16 @@ public class GraphicsManager {
 	 */
 	public void drawReaperBullet(Bullet reaperBullet, Graphics2D g2d, ImageObserver observer) {
 		g2d.drawImage(bulletImg, reaperBullet.x, reaperBullet.y, observer);
+	}
+	
+	/**
+	 * Draws a Boss bullet image to the specified graphics canvas.
+	 * @param bullet the bullet to draw
+	 * @param g2d the graphics canvas
+	 * @param observer object to be notified
+	 */
+	public void drawBossBullet(Bullet bossBullet, Graphics2D g2d, ImageObserver observer) {
+		g2d.drawImage(bossBulletImg, bossBullet.x, bossBullet.y, observer);
 	}
 	/**
 	 * Draws an asteroid image to the specified graphics canvas.
@@ -158,6 +186,10 @@ public class GraphicsManager {
 	 */
 	public void drawReaperExplosion(Rectangle reaperExplosion, Graphics2D g2d, ImageObserver observer) {
 		g2d.drawImage(reaperExplosionImg, reaperExplosion.x, reaperExplosion.y, observer);
+	}
+	
+	public void drawBossExplosion(Rectangle bossExplosion, Graphics2D g2d, ImageObserver observer) {
+		g2d.drawImage(bossExplosionImg, bossExplosion.x, bossExplosion.y, observer);
 	}
 
 	
