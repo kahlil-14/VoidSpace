@@ -180,7 +180,7 @@ public class GameLogic {
 	public void fireBossBullet(){		
 		Bullet bossBullet = new Bullet(bossShip);
 		bossBullets.add(bossBullet);
-		soundMan.playBulletSound();
+		soundMan.playBossBulletSound();
 	}
 	
 	/**

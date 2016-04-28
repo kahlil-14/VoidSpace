@@ -8,7 +8,7 @@ import rbadia.voidspace.main.GameScreen;
 public class BossShip extends Rectangle {
 private static final long serialVersionUID = 1L;
 	
-	public static final int DEFAULT_SPEED = 1;
+	public static final int DEFAULT_SPEED = 2;
 	
 	private int bossShipWidth = 115;
 	private int bossShipHeight = 85;

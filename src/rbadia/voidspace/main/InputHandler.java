@@ -68,12 +68,6 @@ public class InputHandler implements KeyListener{
 			if(rightIsPressed){
 				moveShipRight(ship, gameScreen.getWidth());
 			}
-			
-//			if(vIsPressed){
-//				this.speed/=2;
-//			}else{
-//				this.speed = 1000/5;
-//			}
 		}
 	}
 

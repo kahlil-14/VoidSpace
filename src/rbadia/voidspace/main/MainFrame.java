@@ -213,6 +213,7 @@ public class MainFrame extends JFrame {
 			gameScreen.setLevelValueLabel(levelValueLabel);
 			gameScreen.setEnemiesValueLabel(enemiesValueLabel);
 			gameScreen.setReapersValueLabel(reapersValueLabel);
+			gameScreen.setBossesValueLabel(bossesValueLabel);
 		}
 		return gameScreen;
 	}
