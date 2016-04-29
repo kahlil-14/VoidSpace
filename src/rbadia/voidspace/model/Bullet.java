@@ -42,9 +42,9 @@ public class Bullet extends Rectangle {
 
 	public Bullet(BossShip bossShip) {
 		speed = 2;
-		this.setLocation(bossShip.x + bossShip.width/2 - bulletWidth/2,
-				bossShip.y - bulletHeight + bossShip.height);
-		this.setSize(bulletWidth, bulletHeight);
+		this.setLocation(bossShip.x + bossShip.width/2 - (bulletWidth+17)/2,
+				bossShip.y - (bulletHeight+27) + bossShip.height);
+		this.setSize(bulletWidth+17, bulletHeight+27);
 	}
 
 	/**

@@ -138,7 +138,7 @@ public class GraphicsManager {
 	 * @param observer object to be notified
 	 */
 	public void drawBossBullet(Bullet bossBullet, Graphics2D g2d, ImageObserver observer) {
-		g2d.drawImage(bulletImg, bossBullet.x, bossBullet.y, observer);
+		g2d.drawImage(bossBulletImg, bossBullet.x, bossBullet.y, observer);
 	}
 	/**
 	 * Draws an asteroid image to the specified graphics canvas.

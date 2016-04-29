@@ -21,9 +21,7 @@ private static final long serialVersionUID = 1L;
 	 * @param screen the game screen
 	 */
 	public BossShip(GameScreen screen){
-		this.setLocation(
-        		rand.nextInt(screen.getWidth() - bossShipWidth),
-        		0);
+		this.setLocation((screen.getWidth()/2)- 57,-85);
 		this.setSize(bossShipWidth, bossShipHeight);
 	}
 	/**
